@@ -1,0 +1,47 @@
+# docker-compose.dev.yml
+# Chỉ chạy infrastructure: PostgreSQL + Redis
+# Server và Client chạy local bằng npm run dev
+#
+# Cách dùng:
+#   docker compose -f docker-compose.dev.yml up -d
+#
+version: "3.9"
+
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: masoi-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: masoi
+      POSTGRES_USER: masoi
+      POSTGRES_PASSWORD: masoi_dev
+    ports:
+      - "5432:5432"          # expose ra localhost
+    volumes:
+      - postgres_dev_data:/var/lib/postgresql/data
+      - ./server/db/init.sql:/docker-entrypoint-initdb.d/init.sql
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U masoi -d masoi"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+  redis:
+    image: redis:7-alpine
+    container_name: masoi-redis
+    restart: unless-stopped
+    command: redis-server --maxmemory 128mb --maxmemory-policy allkeys-lru
+    ports:
+      - "6379:6379"          # expose ra localhost
+    volumes:
+      - redis_dev_data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+volumes:
+  postgres_dev_data:
+  redis_dev_data:

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Ma Sói Rules Auditor"
+  short_description: "Audit Ma Sói game rules and phase resolution."
+  default_prompt: "Audit this Ma Sói change against the agreed role rules and phase flow."

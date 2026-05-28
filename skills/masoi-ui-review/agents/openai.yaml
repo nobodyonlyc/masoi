@@ -1,0 +1,4 @@
+interface:
+  display_name: "Ma Sói UI Review"
+  short_description: "Review Ma Sói game UI for clarity and hidden-information safety."
+  default_prompt: "Review the Ma Sói UI for this phase or role change."

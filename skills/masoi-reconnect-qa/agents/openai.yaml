@@ -1,0 +1,4 @@
+interface:
+  display_name: "Ma Sói Reconnect QA"
+  short_description: "Check F5, back, disconnect, and resume flows."
+  default_prompt: "Test or review Ma Sói reconnect and resume behavior for this change."

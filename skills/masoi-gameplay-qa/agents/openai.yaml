@@ -1,0 +1,4 @@
+interface:
+  display_name: "Ma Sói Gameplay QA"
+  short_description: "Create manual gameplay test scenarios for Ma Sói."
+  default_prompt: "Generate or run Ma Sói gameplay QA scenarios for this change."

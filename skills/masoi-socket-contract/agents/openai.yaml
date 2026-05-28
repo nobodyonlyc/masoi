@@ -1,0 +1,4 @@
+interface:
+  display_name: "Ma Sói Socket Contract"
+  short_description: "Keep Socket.IO server/client contracts aligned."
+  default_prompt: "Review or update the Ma Sói Socket.IO event contract for this change."
